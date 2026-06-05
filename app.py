@@ -2,11 +2,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-with open("models/linear_model_scaled.pkl", "rb") as f:
+with open("models/random_forest_model.pkl", "rb") as f:
     model = pickle.load(f)
-
-with open("models/scaler.pkl", "rb") as f:
-    scaler = pickle.load(f)
 
 st.title("Student Performance What-If Simulator")
 st.write(
@@ -53,8 +50,7 @@ if st.button("Predict Final Score"):
         "Extracurricular_Activities": extracurricular
     }])
 
-        input_scaled = scaler.transform(input_data)
-        prediction = model.predict(input_scaled)
+        prediction = model.predict(input_data)
         st.success(
             f"Predicted Final Exam Score: {prediction[0]:.2f}"
         )
