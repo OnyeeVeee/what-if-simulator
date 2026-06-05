@@ -5,7 +5,7 @@ import pickle
 with open("models/random_forest_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-st.title("Student Performance What-If Simulator")
+st.title("AI-Powered Student Performance Simulator")
 st.write(
     "Adjust student factors to predict final exam performance."
 )
@@ -30,15 +30,15 @@ past_scores = st.slider(
 )
 parental_education = st.selectbox(
     "Parental Education Level",
-    [0, 1, 2, 3]
+    ["High School", "Bachelors", "Masters", "PhD"]
 )
 internet_access = st.selectbox(
     "Internet Access at Home",
-    [0, 1]
+    ["No", "Yes"]
 )
 extracurricular = st.selectbox(
     "Participates in Extracurricular Activities",
-    [0, 1]
+    ["No", "Yes"]
 )
 if st.button("Predict Final Score"):
         input_data = pd.DataFrame([{
